@@ -38,8 +38,18 @@ On the file `.assets/stylesheets/application.bootstrap.scss` add the following c
 @import "jquery-ui";
 ```
 
+## run the app
+
+    bin/dev
+
 ## Create rails home page
 
     rails generate controller Pages home
 
 ## Create shared/navbar.html.erb
+
+## Create devise and user
+
+    rails g devise:install
+    rails g devise User
+    rails db:migrate
