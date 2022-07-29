@@ -50,6 +50,38 @@ On the file `.assets/stylesheets/application.bootstrap.scss` add the following c
 
 ## Create devise and user
 
+add the following code to the file `Gemfile`:
+
+    gem 'devise'
+    gem 'devise-bootstrapped'
+
     rails g devise:install
     rails g devise User
     rails db:migrate
+    rails g devise:views:bootstrapped
+
+add the following code to the file `app/views/layouts/application.html.erb`:
+
+```html
+<%= render "shared/navbar" %>
+<div class="container"><%= yield %></div>
+```
+
+add to `config/environments/development.rb` the following code:
+
+```ruby
+    config.action_mailer.default_url_options = { host: 'localhost:3000' }
+```
+
+add to `config/initializers/devise.rb` the following code:
+
+```ruby
+    config.navigational_formats = ['*/*', :html, :turbo_stream]
+```
+
+rails 7 logout snipet:
+
+```html
+<%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete
+}, class: "dropdown-item" %>
+```
